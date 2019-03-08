@@ -5,7 +5,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import dsc.workshop.androidloveskotlin.model.History
-import java.util.*
+import kotlin.collections.ArrayList
 
 class DBHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -41,10 +41,10 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null,
         db.close()
     }
 
-    fun historyList(): List<History> {
+    fun historyList(): ArrayList<History> {
         val query = "SELECT * FROM $HISTORY_TABLE"
 
-        val historyLinkedList = LinkedList<History>()
+        val historyList = ArrayList<History>()
         val db = this.writableDatabase
         val cursor = db.rawQuery(query, null)
 
@@ -53,10 +53,10 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null,
                 val history = History(0, 0)
                 history.poinA = cursor.getLong(cursor.getColumnIndex(COLUMN_POINT_A)).toInt()
                 history.poinB = cursor.getLong(cursor.getColumnIndex(COLUMN_POINT_B)).toInt()
-                historyLinkedList.add(history)
+                historyList.add(history)
             } while (cursor.moveToNext())
-        } 
+        }
 
-        return historyLinkedList
+        return historyList
     }
 }

@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.widget.LinearLayout
 import dsc.workshop.androidloveskotlin.adapter.HistoryAdapter
 import dsc.workshop.androidloveskotlin.model.History
+import dsc.workshop.androidloveskotlin.utils.DBHelper
 import kotlinx.android.synthetic.main.activity_history.*
 
 class HistoryActivity : AppCompatActivity() {
@@ -29,11 +30,14 @@ class HistoryActivity : AppCompatActivity() {
     }
 
     fun setData() {
-        for (item in 0 until teamAPoints.size) {
-            history.add(History(teamAPoints[item], teamBPoints[item]))
-
-            adapter = HistoryAdapter(this, history)
-            historyRV.adapter = adapter
-        }
+        val dbHelper = DBHelper(this)
+        adapter = HistoryAdapter(this, dbHelper.historyList())
+        historyRV.adapter = adapter
+//        for (item in 0 until teamAPoints.size) {
+//            history.add(History(teamAPoints[item], teamBPoints[item]))
+//
+//            adapter = HistoryAdapter(this, history)
+//            historyRV.adapter = adapter
+//        }
     }
 }
