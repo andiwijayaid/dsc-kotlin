@@ -5,6 +5,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 class History(
-    val poinA: String,
-    val poinB: String
+    var poinA: Int,
+    var poinB: Int
 ) : Parcelable

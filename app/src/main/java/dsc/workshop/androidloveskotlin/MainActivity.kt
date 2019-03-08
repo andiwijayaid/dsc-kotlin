@@ -23,5 +23,10 @@ class MainActivity : AppCompatActivity() {
             //short
 //            startActivity(Intent(this, BasketBallActivity::class.java))
         }
+
+        historyBT.setOnClickListener {
+            val intent = Intent(this, HistoryActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

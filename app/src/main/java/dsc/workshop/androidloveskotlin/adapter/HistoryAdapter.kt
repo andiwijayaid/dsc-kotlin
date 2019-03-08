@@ -17,11 +17,13 @@ class HistoryAdapter(val context: Context, var historyList: ArrayList<History>) 
     }
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
-
+        p0.aPoinTV.text = historyList[p1].poinA.toString()
+        p0.bPoinTV.text = historyList[p1].poinB.toString()
     }
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
-        val v = LayoutInflater.from(p0.context).inflate(R.layout.history_item, false)
+        val v = LayoutInflater.from(p0.context).inflate(R.layout.history_item, p0, false)
+        return ViewHolder(v)
     }
 
 

@@ -2,16 +2,22 @@ package dsc.workshop.androidloveskotlin
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import dsc.workshop.androidloveskotlin.model.History
+import dsc.workshop.androidloveskotlin.utils.DBHelper
 import kotlinx.android.synthetic.main.activity_basket_ball.*
 
 class BasketBallActivity : AppCompatActivity() {
+
+    private lateinit var dbHelper: DBHelper
+
+    var aPoint = 0
+    var bPoint = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_basket_ball)
 
-        var aPoint = 0
-        var bPoint = 0
+        dbHelper = DBHelper(this)
 
         a_1_pointBT.setOnClickListener {
             aPoint+=1
@@ -34,10 +40,20 @@ class BasketBallActivity : AppCompatActivity() {
         }
 
         resetBT.setOnClickListener {
-            aPoint = 0
-            bPoint = 0
-            a_pointTV.setText(aPoint.toString())
-            b_pointTV.setText(bPoint.toString())
+            resetScore()
         }
+
+        saveBT.setOnClickListener {
+            val history = History(aPoint, bPoint)
+            dbHelper.saveHistory(history)
+            resetScore()
+        }
+    }
+
+    fun resetScore() {
+        aPoint = 0
+        bPoint = 0
+        a_pointTV.setText(aPoint.toString())
+        b_pointTV.setText(bPoint.toString())
     }
 }
