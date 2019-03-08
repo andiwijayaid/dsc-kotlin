@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:background="@drawable/bg_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+    <ImageView
+            android:id="@+id/dscIV"
+            android:layout_marginTop="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:src="@drawable/ic_dsc"
+            android:contentDescription="@string/dsc_logo"/>
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:layout_below="@id/dscIV">
+
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="@string/chapter_universitas_hasanuddin"
+                  android:textSize="24sp"
+                  android:gravity="center"
+                  android:textStyle="bold"
+                  android:layout_marginBottom="64sp"
+                  android:textColor="@android:color/white"
+                  android:layout_alignBottom="@id/dscIV"/>
+
+        <Button android:layout_width="match_parent"
+                android:id="@+id/basketballBT"
+                android:layout_marginRight="64dp"
+                android:layout_marginBottom="12dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_main_left_button"
+                android:text="@string/basket_ball_app"/>
+
+        <Button
+                android:id="@+id/historyBT"
+                android:text="History"
+                android:layout_marginLeft="64dp"
+                android:background="@drawable/bg_main_right_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_alignParentBottom="true"
+              android:gravity="center"
+              android:layout_marginBottom="12dp"
+              android:text="@string/v_1_0"/>
+
+</RelativeLayout>
